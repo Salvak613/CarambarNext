@@ -1,61 +1,52 @@
-import "dotenv/config"
-import mysql from "mysql2/promise"
+import "dotenv/config";
+import mysql from "mysql2/promise";
 
 const { MYSQL_DB_HOST, MYSQL_DB_USER, MYSQL_DB_PASSWORD, MYSQL_DB_NAME } =
-  process.env
+  process.env;
 
 const seedData = [
   {
-    title: "Partial Prerendering",
-    content:
-      "Next.js 15 introduit le rendu partiel côté serveur pour une expérience utilisateur ultra fluide.",
+    question: "Quelle est la femelle du hamster ?",
+    reponse: "L’Amsterdam",
   },
   {
-    title: "React 19 intégré",
-    content:
-      "Next.js 15 exploite React 19 pour des performances boostées avec le streaming SSR natif.",
+    question: "Que dit un oignon quand il se cogne ?",
+    reponse: "Aïe",
   },
   {
-    title: "App Router standard",
-    content:
-      "L'ancien Pages Router est maintenant remplacé par App Router dans toutes les nouvelles apps Next.js.",
+    question: "Quel est l'animal le plus heureux ?",
+    reponse: "Le hibou, parce que sa femme est chouette.",
   },
   {
-    title: "Layouts imbriqués",
-    content:
-      "Chaque répertoire peut contenir son propre layout, favorisant un design modulaire et cohérent.",
+    question: "Pourquoi le football c'est rigolo ?",
+    reponse: "Parce que Thierry en rit.",
   },
   {
-    title: "Templates dynamiques",
-    content:
-      "Utilisez les fichiers `template.tsx` pour définir des structures alternatives à vos layouts classiques.",
+    question: "Quel est le sport le plus fruité ?",
+    reponse:
+      "La boxe, parce que tu te prends des pêches dans la poire et tu tombes dans les pommes.",
   },
   {
-    title: "Middleware puissant",
-    content:
-      "Appliquez des middlewares pour gérer l'authentification, les redirections ou le tracking sans affecter le rendu.",
+    question: "Que se fait un Schtroumpf quand il tombe ?",
+    reponse: "Un Bleu.",
   },
   {
-    title: "Composants Server & Client",
-    content:
-      "Next.js 15 sépare proprement les composants Client et Server pour optimiser le rendu et la sécurité.",
+    question: "Quel est le comble pour un marin ?",
+    reponse: "Avoir le nez qui coule.",
   },
   {
-    title: "Optimisation des images",
-    content:
-      "Le composant <Image /> optimise automatiquement le format, la taille et le lazy loading des visuels.",
+    question: "Qu'est ce que les enfants usent le plus à l'école ?",
+    reponse: "Le professeur.",
   },
   {
-    title: "API routes encore utiles",
-    content:
-      "Même avec App Router, les routes API sont toujours là pour gérer les petits besoins backend.",
+    question: "Quel est le sport le plus silencieux ?",
+    reponse: "Le para-chuuuut.",
   },
   {
-    title: "TypeScript par défaut",
-    content:
-      "Next.js initialise automatiquement votre projet avec TypeScript et ESLint configurés.",
+    question: "Quel est le comble pour un joueur de bowling ?",
+    reponse: "C’est de perdre la boule.",
   },
-]
+];
 
 const seed = async () => {
   try {
@@ -64,22 +55,22 @@ const seed = async () => {
       user: MYSQL_DB_USER,
       password: MYSQL_DB_PASSWORD,
       database: MYSQL_DB_NAME,
-    })
+    });
 
-    await db.query("DELETE FROM info")
+    await db.query("DELETE FROM blagues");
 
-    for (const { title, content } of seedData) {
-      await db.query("INSERT INTO info (title, content) VALUES (?, ?)", [
-        title,
-        content,
-      ])
+    for (const { question, reponse } of seedData) {
+      await db.query("INSERT INTO blagues (question, reponse) VALUES (?, ?)", [
+        question,
+        reponse,
+      ]);
     }
 
-    await db.end()
-    console.log("🌱 Database seeded successfully")
+    await db.end();
+    console.log("🌱 Database seeded successfully");
   } catch (err) {
-    console.error("❌ Error during seeding:", err)
+    console.error("❌ Error during seeding:", err);
   }
-}
+};
 
-seed()
+seed();
