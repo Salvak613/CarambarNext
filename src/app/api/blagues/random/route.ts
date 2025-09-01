@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { jokesMessages } from "@/data/responseMessages";
 import { JokesModel } from "@/model/jokesModel";
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const [rows] = await db.query(
       "SELECT id, question, reponse FROM blagues ORDER BY RAND() LIMIT 1;"

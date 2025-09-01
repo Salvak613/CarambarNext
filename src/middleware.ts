@@ -4,7 +4,6 @@ const PAGE_PROTECTED_PATHS: string[] = ["/blagues/ajouter-blague"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const method = request.method;
 
   if (PAGE_PROTECTED_PATHS.some((path) => pathname === path)) {
     const url = request.nextUrl.clone();

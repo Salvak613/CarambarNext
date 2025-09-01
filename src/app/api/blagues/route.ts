@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { jokesMessages } from "@/data/responseMessages";
-import { JokesModel } from "@/model/jokesModel";
 
 interface InsertResult {
   insertId: number;

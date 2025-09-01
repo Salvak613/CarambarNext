@@ -1,5 +1,5 @@
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+//const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 const apiRoutes = {
   JOKE: (id: number) => `${apiUrl}/api/blagues/${id}`,
