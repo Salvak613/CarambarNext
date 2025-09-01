@@ -12,7 +12,7 @@ export const swaggerSpec = {
       description: "Serveur de développement",
     },
     {
-      url: "https://your-domain.com",
+      url: "https://carambar-next.vercel.app",
       description: "Serveur de production",
     },
   ],
