@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { getRandomJoke } from "@/service/JokeService";
 import { JokesModel } from "@/model/jokesModel";
+import styles from "./RandomJoke.module.css";
 
 export default function RandomJoke() {
   const [randomJoke, setRandomJoke] = useState<JokesModel | null>(null);
@@ -23,14 +24,31 @@ export default function RandomJoke() {
   };
 
   return (
-    <div>
-      <h1>Random Joke</h1>
-      <p>{randomJoke?.question}</p>
-      {showAnswer && <p>{randomJoke?.reponse}</p>}
-      <button onClick={toggleAnswer}>
-        {showAnswer ? "Masquer la réponse" : "Voir la réponse"}
-      </button>
-      <button onClick={handleNewJoke}>Nouvelle blague</button>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Blague aléatoire</h1>
+      <p className={styles.question}>{randomJoke?.question}</p>
+
+      <div className={styles.answerZone}>
+        {showAnswer && (
+          <p className={styles.answerAppear}>{randomJoke?.reponse}</p>
+        )}
+      </div>
+
+      <div className={styles.buttonZone}>
+        {!showAnswer && (
+          <button className={styles.button} onClick={toggleAnswer}>
+            Voir la réponse
+          </button>
+        )}
+        {showAnswer && (
+          <button
+            className={`${styles.button} ${styles.buttonAppear}`}
+            onClick={handleNewJoke}
+          >
+            Nouvelle blague
+          </button>
+        )}
+      </div>
     </div>
   );
 }

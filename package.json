@@ -16,6 +16,8 @@
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-react": "^5.28.0",
     "testing-scholar-app": "file:"
   },
   "devDependencies": {

@@ -8,6 +8,6 @@ const apiRoutes = {
   JOKES_ADD: `${apiUrl}/api/blagues/ajouter-blague`,
 };
 
-const appRoutes = {};
+// const appRoutes = {};
 
-export { apiRoutes, appRoutes };
+export { apiRoutes };
